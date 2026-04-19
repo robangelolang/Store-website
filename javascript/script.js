@@ -32,10 +32,15 @@ function addToCart(productName, price, quantityInputId) {
   const quantityInput = document.getElementById(quantityInputId);
   const quantity = parseInt(quantityInput.value);
 
-  if (isNaN(quantity) || quantity < 1) {
-    alert("Please enter a valid quantity.");
-    return;
-  }
+  if (isNaN(quantity) || quantity < 0) {
+  alert("Please enter a valid quantity.");
+  return;
+}
+
+if (quantity === 0) {
+  alert("Quantity must be at least 1 to add to cart.");
+  return;
+}
 
   const cart = getCart();
   const existingProduct = cart.find(item => item.name === productName);
